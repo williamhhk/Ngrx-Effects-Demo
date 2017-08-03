@@ -24,6 +24,16 @@ export class ApiService {
       .catch(this.handleError);
   }
 
+  public getAuthors(): Observable<any[]> {
+
+    return this.http
+      .get('http://localhost:3000/authors')
+      .map(response => {
+        return response.json();
+      })
+      .catch(this.handleError);
+  }
+
   private handleError (error: Response | any) {
     console.error('ApiService::handleError', error);
     return Observable.throw(error);
